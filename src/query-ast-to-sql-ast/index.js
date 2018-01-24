@@ -130,7 +130,7 @@ export function populateASTNode(queryASTNode, parentTypeNode, sqlASTNode, namesp
     // grab the types and fields inside the connection
     const stripped = stripRelayConnection(gqlType, queryASTNode, this.fragments)
     // reassign those
-    gqlType = stripped.gqlType
+    gqlType = stripNonNullType(stripped.gqlType)
     queryASTNode = stripped.queryASTNode
     // we'll set a flag for pagination.
     if (field.sqlPaginate) {
